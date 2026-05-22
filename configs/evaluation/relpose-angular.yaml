@@ -1,0 +1,23 @@
+# @package _global_
+
+defaults:
+  - override /data: relpose-angular
+
+name: relpose-angular
+
+eval_models:
+  - vggt_flatquant_fisher
+
+eval_datasets:
+  - CO3Dv2
+
+no_crop: False
+load_img_size: 512
+
+device: cuda
+
+verbose: False
+
+seed: 42
+
+save_suffix: null

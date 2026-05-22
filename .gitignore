@@ -1,0 +1,36 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+
+# Local editor and agent state
+.vscode/
+.idea/
+.claude/
+
+# Data, checkpoints, and generated outputs
+datasets/
+data/
+checkpoints/
+ckpts/
+outputs/
+logs/
+tmp/
+*.pt
+*.pth
+*.safetensors
+*.npy
+*.npz
+*.ply
+*.png
+*.jpg
+*.jpeg
+*.log
+!visual/
+!visual/visual_7scenes.png
+visual_7scenes.pdf
+
+# Native build artifacts
+*.so
+*.o

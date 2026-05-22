@@ -1,0 +1,24 @@
+# @package _global_
+
+defaults:
+  - override /data: relpose-distance
+
+name: relpose-distance
+
+eval_models:
+  - vggt_flatquant_fisher
+
+eval_datasets:
+  - Re10K
+
+no_crop: False
+load_img_size: 512
+pose_eval_stride: 1
+
+device: cuda
+
+verbose: False
+
+seed: 42
+
+save_suffix: null

@@ -1,0 +1,33 @@
+# @package _global_
+
+defaults:
+  - override /data: mv_recon
+
+name: mv_recon
+run_name: default
+
+output_dir: /data1/vggt/outputs/${name}
+
+eval_models:
+  - vggt_flatquant_fisher
+
+eval_datasets:
+  - 7scenes-sparse
+  - DTU
+  - ETH3D
+
+no_crop: True
+load_img_size: 518
+
+device: cuda
+
+verbose: False
+
+seed: 42
+
+save_suffix: null
+save_outputs: True
+
+hydra:
+  run:
+    dir: ${output_dir}/hydra/${run_name}_${now:%Y-%m-%d_%H-%M-%S}

@@ -1,0 +1,89 @@
+vggt:
+  cfg:
+    _target_: models.fastmodel.VGGT
+    pretrained_model_name_or_path: /path/to/VGGT-1B
+  infer_cameras_w2c:
+    _target_: interfaces.vggt.infer_cameras_w2c
+    _partial_: true
+  infer_cameras_c2w:
+    _target_: interfaces.vggt.infer_cameras_c2w
+    _partial_: true
+  infer_mv_pointclouds:
+    _target_: interfaces.vggt.infer_mv_pointclouds
+    _partial_: true
+
+vggt_flatquant: &vggt_flatquant_base
+  cfg:
+    _target_: models.fastmodel.VGGT_FlatQuant
+    pretrained_model_name_or_path: /path/to/VGGT-1B
+    quantized_model_path: checkpoints/model_flatquant_w4a4.pt
+    w_bits: 4
+    a_bits: 4
+    cali_trans: true
+    add_diag: true
+    lwc: true
+    lac: true
+  infer_cameras_w2c:
+    _target_: interfaces.vggt.infer_cameras_w2c
+    _partial_: true
+  infer_cameras_c2w:
+    _target_: interfaces.vggt.infer_cameras_c2w
+    _partial_: true
+  infer_mv_pointclouds:
+    _target_: interfaces.vggt.infer_mv_pointclouds
+    _partial_: true
+
+vggt_flatquant_w4a4:
+  <<: *vggt_flatquant_base
+
+vggt_flatquant_fisher:
+  <<: *vggt_flatquant_base
+  cfg:
+    _target_: models.fastmodel.VGGT_FlatQuant
+    pretrained_model_name_or_path: /path/to/VGGT-1B
+    quantized_model_path: checkpoints/model_flatquant_w4a4_fisher.pt
+    w_bits: 4
+    a_bits: 4
+    cali_trans: true
+    add_diag: true
+    lwc: true
+    lac: true
+
+vggt_flatquant_w4a8:
+  <<: *vggt_flatquant_base
+  cfg:
+    _target_: models.fastmodel.VGGT_FlatQuant
+    pretrained_model_name_or_path: /path/to/VGGT-1B
+    quantized_model_path: checkpoints/model_flatquant_w4a8.pt
+    w_bits: 4
+    a_bits: 8
+    cali_trans: true
+    add_diag: true
+    lwc: true
+    lac: true
+
+vggt_flatquant_w4a8_fisher:
+  <<: *vggt_flatquant_base
+  cfg:
+    _target_: models.fastmodel.VGGT_FlatQuant
+    pretrained_model_name_or_path: /path/to/VGGT-1B
+    quantized_model_path: checkpoints/model_flatquant_w4a8_fisher.pt
+    w_bits: 4
+    a_bits: 8
+    cali_trans: true
+    add_diag: true
+    lwc: true
+    lac: true
+
+vggt_flatquant_w8a8:
+  <<: *vggt_flatquant_base
+  cfg:
+    _target_: models.fastmodel.VGGT_FlatQuant
+    pretrained_model_name_or_path: /path/to/VGGT-1B
+    quantized_model_path: checkpoints/model_flatquant_w8a8.pt
+    w_bits: 8
+    a_bits: 8
+    cali_trans: true
+    add_diag: true
+    lwc: true
+    lac: true
